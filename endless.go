@@ -364,7 +364,10 @@ func (srv *endlessServer) signalHooks(ppFlag int, sig os.Signal) {
 	}
 	return
 }
-
+func (srv *endlessServer) CallShutdown() {
+	log.Println(pid, "Shutdown")
+	srv.shutdown()
+}
 /*
 shutdown closes the listener so that no new connections are accepted. it also
 starts a goroutine that will hammer (stop all running requests) the server
